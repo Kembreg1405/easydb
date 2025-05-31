@@ -28,6 +28,22 @@ idb.open.onerror=(e)=>{Print('IndexedDB error '+ e)}
 idb.open.onsuccess=()=>{idb.done()}
 idb.open.onerror=()=>{console.log('DB error');}
 
+
+function CreateNewDataRow(Make)=>
+{
+DataSet={};
+var DataSet['Make']=Toyota;
+idb.putRow(DataSet).then(()=>idb.done());
+}
+
+function UpdateDataRow(Make)=>
+{
+DataSet={};
+var DataSet['Make']=Toyota;
+idb.table('Cars');
+idb.putRow(DataSet).then(()=>idb.done());
+}
+
 function GetCarMake(Make) {
 idb.table('Cars');
 idb.queryName('Make');
