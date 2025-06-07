@@ -5,66 +5,33 @@ Are you pissed off about just how stupid the IndexedDB interface is?
 Then this is for you.
 
 Use easydb and it will be simple.
+See the sample html for a full working example.
 
-Link to the easydb.js file in the usual way: $.getScript('easydb.js'); 
+Here's a list of the methods you can use:
 
-or
-
-<script src='easydb.js'></script>
-
-// Sample Code
-idb.busy(true);
-idb.tables('Cars');
-idb.queryNames('make'); //Searchable index
-idb.queryNames('color'); //Searchable index
-idb.queryNames(['make','colour']); //Searchable index
-
-idb.tables('People');
-idb.queryNames(['age','weight']); //Searchable index
-idb.queryNames('age'); //Searchable index
-
-idb.open=indexedDB.open('MyDatabase',1);
-idb.open.onerror=(e)=>{Print('IndexedDB error '+ e)}
-idb.open.onsuccess=()=>{idb.done()}
-idb.open.onerror=()=>{console.log('DB error');}
-
-
-function CreateNewDataRow(Make)=>
-{
-DataSet={};
-var DataSet['Make']=Toyota;
-idb.putRow(DataSet).then(()=>idb.done());
-}
-
-function UpdateDataRow(Make)=>
-{
-DataSet={};
-var DataSet['Make']=Toyota;
-idb.table('Cars');
-idb.putRow(DataSet).then(()=>idb.done());
-}
-
-function GetCarMake(Make) {
-idb.table('Cars');
-idb.queryName('Make');
-idb.match(Make);
-idb.property('data');
-idb.getProperty().then((x)=>{console.log(idb.value(x));idb.done()}); 
-}
-
-function GetCarColour(Colour) {
-idb.table('Cars');
-idb.queryName('Colour');
-idb.match(Make);
-idb.property('data');
-idb.getProperty().then((x)=>{console.log(idb.value(x));idb.done()}); 
-}
-
-function GetCarMakeAndColour(Make,Colour) {
-idb.table('Cars');
-idb.queryName('MakeColour');
-idb.match([Make,Colour]);
-idb.property('data');
-idb.getProperty().then((x)=>{console.log(idb.value(x));idb.done()}); 
-}
-
+easydb.queueLater() //Adds a function to be called to the queue in 1 second  
+easydb.queue() //  A function to be called to the queue.  Can optional be added to the front of the queue  
+easydb.getKey(Value) //Returns the key to a query  
+easydb.busy(); //Settable or returns state  
+easydb.value() //Returns a value or empty string  
+easydb.hasValue() //True, if there is a value  
+easydb.getProperty() //Returns a property from the row  
+easydb.getRow() // Returns a row to a query  
+easydb.getKeyRow() //  
+easydb.data() //  
+easydb.putRow() //    
+easydb.clearTable( ) //    
+easydb.createDB() //  
+easydb.deleteRow() //  
+easydb.match() //  
+easydb.done() //  
+easydb.all() //    
+easydb.busy() //    
+easydb.property() //    
+easydb.setKey() //    
+easydb.key() //  
+easydb.updateRow() //  
+easydb.table() //  
+easydb.tables() //  
+easydb.queryNames() //  
+easydb.queryName() //  
